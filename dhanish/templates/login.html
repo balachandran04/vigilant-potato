@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Login</title>
+</head>
+<body class="bg-gray-100">
+
+    <!-- Login Form Container -->
+    <div class="min-h-screen flex items-center justify-center">
+        <div class="w-full max-w-md bg-white p-8 rounded-lg shadow-lg">
+            <h1 class="text-3xl font-semibold text-center text-gray-800 mb-6">Login</h1>
+
+            <!-- Login Form -->
+            <form method="POST" class="space-y-6">
+                {% csrf_token %}
+
+                <!-- Username Field -->
+                <div class="flex flex-col">
+                    <label for="username" class="text-lg font-medium text-gray-700">Username</label>
+                    <input type="text" name="username" id="username" class="p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:outline-none w-full" required>
+                </div>
+
+                <!-- Password Field -->
+                <div class="flex flex-col">
+                    <label for="password" class="text-lg font-medium text-gray-700">Password</label>
+                    <input type="password" name="password" id="password" class="p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:outline-none w-full" required>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" class="w-full py-3 bg-indigo-600 text-white font-semibold rounded-lg shadow-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-400 transition duration-200">
+                    Login
+                </button>
+            </form>
+
+            <!-- Register Link -->
+            <p class="mt-4 text-center text-gray-600">
+                Don't have an account? <a href="{% url 'register' %}" class="text-indigo-600 hover:underline">Register here</a>
+            </p>
+        </div>
+    </div>
+
+</body>
+</html>

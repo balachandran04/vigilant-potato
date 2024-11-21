@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+  <div class="max-w-4xl mx-auto p-6 bg-white shadow-lg rounded-lg">
+    <h1 class="text-3xl font-semibold text-center text-gray-800 mb-6">Order Status</h1>
+    
+    <div class="bg-gray-50 p-6 rounded-lg shadow-sm">
+      <h3 class="text-2xl font-semibold text-gray-900 mb-4">Order #{{ order.id }}</h3>
+      
+      <div class="space-y-4">
+        <div class="flex justify-between text-lg text-gray-700">
+          <span class="font-medium">Order Date:</span>
+          <span>{{ order.order_date }}</span>
+        </div>
+        
+        <div class="flex justify-between text-lg text-gray-700">
+          <span class="font-medium">Shipping Address:</span>
+          <span>{{ order.shipping_address }}</span>
+        </div>
+  
+        <div class="flex justify-between text-lg text-gray-700">
+          <span class="font-medium">Total Price:</span>
+          <span class="text-xl font-semibold text-green-600">${{ order.total_price }}</span>
+        </div>
+  
+        <div class="flex justify-between text-lg text-gray-700">
+          <span class="font-medium">Payment Method:</span>
+          <span>{{ order.get_payment_method_display }}</span>
+        </div>
+  
+        <div class="flex justify-between text-lg text-gray-700">
+          <span class="font-medium">Payment Status:</span>
+          <span>{{ order.get_payment_status_display }}</span>
+        </div>
+  
+        <div class="flex justify-between text-lg text-gray-700">
+          <span class="font-medium">Order Status:</span>
+          <span class="font-semibold text-indigo-600">{{ order.get_status_display }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+</body>
+</html>

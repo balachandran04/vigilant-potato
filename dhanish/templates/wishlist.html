@@ -1,0 +1,37 @@
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Your Wishlist</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-gray-100">
+    <div class="max-w-5xl mx-auto p-6 bg-white shadow-lg rounded-lg mt-8">
+      <h1 class="text-3xl font-bold text-center text-gray-800 mb-6">Your Wishlist</h1>
+      
+      {% if items %}
+        <!-- Wishlist Items Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          {% for item in items %}
+            <div class="bg-white p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
+              <img src="{{ item.product.image.url }}" alt="{{ item.product.name }}" class="w-full h-48 object-cover rounded-md mb-4">
+              
+              <h2 class="text-xl font-semibold text-gray-800 mb-2">{{ item.product.name }}</h2>
+              <p class="text-gray-600 mb-4">${{ item.product.price }}</p>
+              
+              <!-- Remove from Wishlist Button -->
+              <div class="text-center">
+                <a href="{% url 'remove_from_wishlist' item.id %}" class="text-red-600 hover:text-red-800 font-semibold">
+                  Remove from Wishlist
+                </a>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      {% else %}
+        <!-- Empty Wishlist Message -->
+        <p class="text-center text-gray-700 text-lg">Your wishlist is empty! Start adding products.</p>
+      {% endif %}
+    </div>
+  </body>
+</html>
